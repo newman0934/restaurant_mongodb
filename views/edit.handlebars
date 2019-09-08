@@ -1,0 +1,50 @@
+<div class="container my-5">
+    <div class="text-center mb-3"><h1>新增餐廳名單</h1></div>
+    <div class="row">
+
+        <form class="col-sm-6 mx-auto border p-3 border-dark" method="POST" action="/restaurant/{{restaurant.id}}?_method=PUT">
+            <div class="form-group">
+                <label for="name">餐廳名稱*</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="請輸入餐廳名稱" value="{{restaurant.name}}" required>
+            </div>
+            <div class="form-group">
+                <label for="name_en">餐廳英文名稱*</label>
+                <input type="text" class="form-control" id="name_en" placeholder="請入餐廳英文名稱" name="name_en" value="{{restaurant.name_en}}" required>
+            </div>
+            <div class="form-group">
+                <label for="category">餐廳類別*</label>
+                <input type="text" class="form-control" id="category" name="category" placeholder="請輸入類別，如：中式料理、日式料理" value="{{restaurant.category}}" required>
+            </div>
+            <div class="form-group">
+                <label for="image">餐廳照片*</label>
+                <input type="text" class="form-control" id="image" name="image" placeholder="請輸入餐廳照片的網址" value="{{restaurant.image}}" required>
+            </div>
+            <div class="form-group">
+                <label for="location">餐廳地址*</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="請輸入餐廳地址" value="{{restaurant.location}}" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">餐廳電話*</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="請輸入電話" value="{{restaurant.phone}}" required>
+            </div>
+            <div class="form-group">
+                <label for="google_map">地圖</label>
+                <input type="text" class="form-control" id="google_map" name="google_map" placeholder="請輸入餐廳的google map網址" value="{{restaurant.google_map}}">
+            </div>
+            <div class="form-group">
+                <label for="rating">評分*</label>
+                <input type="number" class="form-control" id="rating" name="rating" placeholder="請輸入評分,1~5" value="{{restaurant.rating}}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">簡介*</label>
+                <textarea type="text" class="form-control" id="description" name="description" placeholder="請輸入簡介" required>{{restaurant.description}}</textarea>
+            </div>
+            <small>*為必填欄位</small>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-primary">送出編輯</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
