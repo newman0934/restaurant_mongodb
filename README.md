@@ -12,9 +12,9 @@
 
 ## Quick view
 
-![main page](https://raw.githubusercontent.com/newman0934/restaurant/master/public/img/show.png)
-![index page](https://raw.githubusercontent.com/newman0934/restaurant/master/public/img/index.png)
-![edit page](https://raw.githubusercontent.com/newman0934/restaurant/master/public/img/edit.png)
+![main page](https://raw.githubusercontent.com/newman0934/restaurant_mongodb/master/public/img/show.png)
+![index page](https://raw.githubusercontent.com/newman0934/restaurant_mongodb/master/public/img/index.png)
+![edit page](https://raw.githubusercontent.com/newman0934/restaurant_mongodb/master/public/img/edit.png)
 ## Environment set up
 - Node.js
 - Express.js
