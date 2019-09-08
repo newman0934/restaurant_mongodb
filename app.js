@@ -23,8 +23,10 @@ mongoose.connect("mongodb://localhost/restaurant",{useNewUrlParser:true})
 const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({extended:true}))
 
+//載入Scheme
 const Restaurant =require("./models/restaurant")
 
+//連到資料庫
 const db = mongoose.connection
 
 db.on("error",()=>{
@@ -35,7 +37,7 @@ db.once("open",()=>{
     console.log("mongodb connected")
 })
 
-
+//載入methodorverride
 const methodOverride = require("method-override")
 app.use(methodOverride("_method"))
 

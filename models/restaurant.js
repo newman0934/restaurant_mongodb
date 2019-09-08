@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Scheme = mongoose.Schema
-
+//設定Scheme
 const restaurantScheme = new Scheme({
     name:{
         type:String,

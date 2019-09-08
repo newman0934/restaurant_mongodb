@@ -72,31 +72,6 @@
         </div>
       </a>
     </div>
-    {{!--
-    <a href="/restaurant/{{this.id}}" class="text-secondary">
-      <div class="card mb-3">
-        <img class="card-img-top" src="{{this.image}}">
-        <div class="card-body p-3">
-          <h6 class="card-title mb-1">{{this.name}}</h6>
-
-          <div class="restaurant-category mb-1">
-            <i class="fas fa-utensils mr-2"></i> {{this.category}}
-          </div>
-
-          <span class="badge badge-pill badge-danger font-weight-normal">
-            {{this.rating}}
-            <i class="fas fa-star fa-xs"></i>
-          </span>
-          <div class="col-auto my-3">
-            <a href="/restaurant/{{{this.id}}}" class="btn btn-outline-secondary">詳情</a>
-            <a href="/restaurant/{{{this.id}}}/edit" class="btn btn-outline-success">編輯</a>
-            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-{{this.id}}">
-              刪除
-            </button>
-          </div>
-        </div>
-      </div>
-    </a> --}}
     <!-- Modal -->
     <div class="modal fade" id="delete-{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

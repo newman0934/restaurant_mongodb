@@ -3,7 +3,7 @@ const router = express.Router()
 const Restaurant = require("../models/restaurant")
 
 
-//回傳搜尋後的頁面
+//回傳搜尋與排序後的頁面
 router.get("/", (req, res) => {
     const keyword = req.query.keyword
     const sortKey = req.query.sortKey

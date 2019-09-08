@@ -4,11 +4,11 @@ const Restaurant = require("../models/restaurant")
 
 
 
-// 新增一筆 Todo 頁面
+// 新增餐廳頁面
 router.get('/new', (req, res) => {
     res.render("new")
 })
-// 顯示一筆 Todo 的詳細內容
+// 顯示餐廳的詳細內容
 router.get('/:id', (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if (err) return console.error(err)
@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
         })
     })
 })
-// 新增一筆  Todo
+// 新增一筆餐廳資訊
 router.post('/', (req, res) => {
     const restaurant = new Restaurant({
         name: req.body.name,
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         return res.redirect("/")
     })
 })
-// 修改 Todo 頁面
+// 修改餐廳頁面
 router.get('/:id/edit', (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if (err) console.error(err)
@@ -44,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
         })
     })
 })
-// 修改 Todo
+// 修改餐廳資訊
 router.put('/:id/', (req, res) => {
     Restaurant.findById(req.params.id, (err, restaurant) => {
         if (err) return console.error(err)
@@ -64,7 +64,7 @@ router.put('/:id/', (req, res) => {
         })
     })
 })
-// 刪除 Todo
+// 刪除餐廳資訊
 router.delete('/:id/delete', (req, res) => {
     Restaurant.findById(req.params.id,(err,restaurant)=>{
         if(err) return console.error(err)
