@@ -50,6 +50,9 @@ app.use("/restaurant",require("./routes/restaurant"))
 //回傳搜尋後的頁面
 app.use("/search",require("./routes/search"))
 
+//回傳users的功能頁面
+app.use("/users",require("./routes/user"))
+
 //監聽並啟動伺服器
 app.listen(port,()=>{
     console.log("express is listening")
