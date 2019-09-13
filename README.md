@@ -47,8 +47,10 @@
 - 輸入node restaurantSeeder.js
 - cd到restaurant_mongodb位址
 - 在根目錄新增一個.env檔案並把以下code輸入到裡面
-    FACEBOOK_ID=你的facebook_id
-    FACEBOOK_SECRET=你的facebook密鑰
-    FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+```js
+FACEBOOK_ID=你的facebook_id
+FACEBOOK_SECRET=你的facebook密鑰
+FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+```
 - 輸入node app.js
 - 在瀏覽器上進入http://localhost:3000
