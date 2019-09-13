@@ -9,6 +9,10 @@ if(process.env.NODE_ENV !== "production"){
     require("dotenv").config()
 }
 
+//載入connect-flash
+const flash = require("connect-flash")
+
+
 //載入express-handlebars
 const exphbs = require("express-handlebars")
 
@@ -52,6 +56,16 @@ app.use((req,res,next)=>{
     next()
 })
 
+//使用connect-flash
+app.use(flash())
+
+app.use((req,res,next)=>{
+    res.locals.user = req.user
+    res.locals.isAuthenticated = req.isAuthenticated()
+    res.locals.success_msg = req.flash("success_msg")
+    res.locals.warning_msg = req.flash("warning_msg")
+    next()
+})
 
 //連到資料庫
 const db = mongoose.connection
