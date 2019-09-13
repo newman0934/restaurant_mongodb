@@ -4,6 +4,11 @@ const express = require("express")
 const app = express()
 const port = 3000
 
+//判別開發環境
+if(process.env.NODE_ENV !== "production"){
+    require("dotenv").config()
+}
+
 //載入express-handlebars
 const exphbs = require("express-handlebars")
 
@@ -17,7 +22,7 @@ app.use(express.static("public"))
 //載入mogoose
 const mongoose = require("mongoose")
 //連接資料庫
-mongoose.connect("mongodb://localhost/restaurant",{useNewUrlParser:true})
+mongoose.connect("mongodb://localhost/restaurant",{useNewUrlParser:true,useCreateIndex:true})
 
 //載入body-parser
 const bodyParser = require("body-parser")
@@ -74,6 +79,8 @@ app.use("/search",require("./routes/search"))
 
 //回傳users的功能頁面
 app.use("/users",require("./routes/user"))
+
+app.use("/auth",require("./routes/auths"))
 
 //監聽並啟動伺服器
 app.listen(port,()=>{
