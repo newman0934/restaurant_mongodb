@@ -36,6 +36,12 @@ const restaurantScheme = new Scheme({
     },
     google_map:{
         type:String
+    },
+    userId: {
+        type:Scheme.Types.ObjectId,
+        ref: "User",
+        index: true,
+        required:true
     }
 })
 

@@ -5,7 +5,7 @@ const { authenticated } = require('../config/auth')
 
 //顯示所有餐廳頁面
 router.get("/", authenticated, (req,res)=>{
-    Restaurant.find((err,restaurant)=>{
+    Restaurant.find({userId: req.user._id},(err,restaurant)=>{
         if (err) return console.error(err)
         return res.render("index",{restaurant})
     })
