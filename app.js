@@ -26,6 +26,27 @@ app.use(bodyParser.urlencoded({extended:true}))
 //載入Scheme
 const Restaurant =require("./models/restaurant")
 
+//載入session
+const session = require("express-session")
+app.use(session({
+    secret: "your secret key",
+    resave: false,
+    saveUninitialized: true
+}))
+
+//載入passport
+const passport =require("passport")
+app.use(passport.initialize())
+app.use(passport.session())
+
+//載入passport config
+require("./config/passport")(passport)
+app.use((req,res,next)=>{
+    res.locals.user = req.user
+    next()
+})
+
+
 //連到資料庫
 const db = mongoose.connection
 
