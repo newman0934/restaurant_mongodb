@@ -11,6 +11,7 @@
 - 排序餐廳
 - 使用者登入、登出、註冊
 - Facebook登入
+- google登入
 ## Quick view
 
 ![main page](https://raw.githubusercontent.com/newman0934/restaurant_mongodb/master/public/img/show.png)
@@ -30,7 +31,8 @@
 - mongoose: ^5.6.13,
 - passport: ^0.4.0,
 - passport-facebook: ^3.0.0,
-- passport-local: ^1.0.0
+- passport-local: ^1.0.0,
+- passport-google-oauth20: ^2.0.0
 
 ### Installation
 - Download restaurant ZIP
@@ -51,6 +53,10 @@
 FACEBOOK_ID=你的facebook_id
 FACEBOOK_SECRET=你的facebook密鑰
 FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+
+GOOGLE_ID=你的google id
+GOOGLE_SECRET=你的google 密碼
+GOOGLE_CALLBACK=http://localhost:3000/auth/google/callback
 ```
 - 輸入node app.js
 - 在瀏覽器上進入http://localhost:3000
