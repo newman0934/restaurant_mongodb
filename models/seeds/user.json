@@ -1,14 +1,13 @@
 {
-    "results": [
-      {
-        "name": "caesar",
-        "email": "caesar@gmail.com",
-        "password": "111"
-      },
-      {
-        "name": "wang",
-        "email": "wang@gmail.com",
-        "password": "111"
-      }
-    ]
-  }
+  "results": [{
+      "name": "caesar",
+      "email": "caesar@gmail.com",
+      "password": "111"
+    },
+    {
+      "name": "wang",
+      "email": "wang@gmail.com",
+      "password": "111"
+    }
+  ]
+}

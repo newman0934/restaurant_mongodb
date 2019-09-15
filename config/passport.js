@@ -6,19 +6,28 @@ const bcrypt = require("bcryptjs")
 
 const User = require("../models/user")
 
-module.exports = passport =>{
+
+module.exports = passport => {
     passport.use(
-        new LocalStrategy({usernameField: "email"},(email, password, done)=>{
-            User.findOne({email:email}).then(user=>{
-                if(!user){
-                    return done(null,false,{message:"that email is not registered"})
+        new LocalStrategy({
+            usernameField: "email"
+        }, (email, password, done) => {
+            User.findOne({
+                email: email
+            }).then(user => {
+                if (!user) {
+                    return done(null, false, {
+                        message: "that email is not registered"
+                    })
                 }
-                bcrypt.compare(password, user.password, (err, isMatch)=>{
+                bcrypt.compare(password, user.password, (err, isMatch) => {
                     if (err) throw err
-                    if(isMatch){
-                        return done(null,user)
-                    }else{
-                        return done(null,false,{message: "email and password incorrect"})
+                    if (isMatch) {
+                        return done(null, user)
+                    } else {
+                        return done(null, false, {
+                            message: "email and password incorrect"
+                        })
                     }
                 })
             })
@@ -29,29 +38,29 @@ module.exports = passport =>{
             clientID: process.env.FACEBOOK_ID,
             clientSecret: process.env.FACEBOOK_SECRET,
             callbackURL: process.env.FACEBOOK_CALLBACK,
-            profileFields: ["email","displayName"]
-        },(accessToken, refreshToken, profile, done)=>{
+            profileFields: ["email", "displayName"]
+        }, (accessToken, refreshToken, profile, done) => {
             User.findOne({
-                email:profile._json.email
-            }).then(user=>{
-                if(!user){
+                email: profile._json.email
+            }).then(user => {
+                if (!user) {
                     let randomPassword = Math.random().toString(36).slice(-8)
-                    bcrypt.genSalt(10, (err,salt)=>{
-                        bcrypt.hash(randomPassword, salt, (err,hash)=>{
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(randomPassword, salt, (err, hash) => {
                             let newUser = User({
                                 name: profile._json.name,
                                 email: profile._json.email,
                                 password: hash
                             })
-                            newUser.save().then(user=>{
+                            newUser.save().then(user => {
                                 return done(null, user)
-                            }).catch(err=>{
+                            }).catch(err => {
                                 console.log(err)
                             })
                         })
                     })
-                }else{
-                    return done(null,user)
+                } else {
+                    return done(null, user)
                 }
             })
         })
@@ -60,31 +69,31 @@ module.exports = passport =>{
         new GoogleStrategy({
             clientID: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_SECRET,
-            callbackURL:  process.env.GOOGLE_CALLBACK,
-            profileFields: ["email","displayName"]
-        },(accessToken, refreshToken, profile, done)=>{
+            callbackURL: process.env.GOOGLE_CALLBACK,
+            profileFields: ["email", "displayName"]
+        }, (accessToken, refreshToken, profile, done) => {
             User.findOne({
-                email:profile._json.email
-            }).then(user=>{
-                if(!user){
+                email: profile._json.email
+            }).then(user => {
+                if (!user) {
                     let randomPassword = Math.random().toString(36).slice(-8)
-                    bcrypt.genSalt(10, (err,salt)=>{
-                        bcrypt.hash(randomPassword, salt, (err,hash)=>{
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(randomPassword, salt, (err, hash) => {
                             let newUser = User({
 
                                 name: profile._json.name,
                                 email: profile._json.email,
                                 password: hash
                             })
-                            newUser.save().then(user=>{
+                            newUser.save().then(user => {
                                 return done(null, user)
-                            }).catch(err=>{
+                            }).catch(err => {
                                 console.log(err)
                             })
                         })
                     })
-                }else{
-                    return done(null,user)
+                } else {
+                    return done(null, user)
                 }
             })
         })
@@ -94,8 +103,8 @@ module.exports = passport =>{
         done(null, user.id)
     })
     passport.deserializeUser((id, done) => {
-      User.findById(id, (err, user) => {
-        done(err, user)
-      })
+        User.findById(id, (err, user) => {
+            done(err, user)
+        })
     })
 }

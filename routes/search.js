@@ -12,20 +12,24 @@ router.get("/", (req, res) => {
     sortObj[sortKey] = sortValue
 
     Restaurant.find({})
-    .sort(sortObj)
-    .exec((err, restaurant) => {
+        .sort(sortObj)
+        .exec((err, restaurant) => {
 
-        if (err) return console.error(err)
-        const restaurants = restaurant.filter(restaurant => {
-            // const regex = new RegExp(keyword)
-            // return restaurant.name.match(regex) || restaurant.category.match(regex)
-            let nameMatch = restaurant.name.toLowerCase().includes(keyword.toLowerCase())
-            let cateforyMatch = restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+            if (err) return console.error(err)
+            const restaurants = restaurant.filter(restaurant => {
+                // const regex = new RegExp(keyword)
+                // return restaurant.name.match(regex) || restaurant.category.match(regex)
+                let nameMatch = restaurant.name.toLowerCase().includes(keyword.toLowerCase())
+                let cateforyMatch = restaurant.category.toLowerCase().includes(keyword.toLowerCase())
 
-            return nameMatch || cateforyMatch
+                return nameMatch || cateforyMatch
+            })
+            res.render("index", {
+                restaurant: restaurants,
+                keyword: keyword,
+                sortKey: sortKey
+            })
         })
-        res.render('index', { restaurant: restaurants, keyword: keyword, sortKey: sortKey })
-    })
 
 })
 

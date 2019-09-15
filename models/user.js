@@ -5,18 +5,18 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    email:{
+    email: {
         type: String,
         required: true
     },
     password: {
-        type:String,
-        required:true
+        type: String,
+        required: true
     },
     date: {
-        type:Date,
+        type: Date,
         default: Date.now
     }
 })
 
-module.exports = mongoose.model("User",userSchema)
+module.exports = mongoose.model("User", userSchema)
